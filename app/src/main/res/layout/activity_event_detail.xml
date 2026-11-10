@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Coursework features (b) and (c): details of ONE event and the list of its sessions.
+    Top: toolbar (Edit / Delete event). Then a card with the event information,
+    a "Sessions (N)" header, the session list (or an empty message) and a "+" button.
+-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EventDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- ===== Toolbar with back arrow and Edit / Delete actions ===== -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/screen_background">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:menu="@menu/menu_event_detail"
+                app:navigationContentDescription="@string/cd_navigate_back"
+                app:navigationIcon="?attr/homeAsUpIndicator"
+                app:title="@string/title_event_details"
+                app:titleTextAppearance="@style/TextAppearance.Event.ToolbarTitle" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- ===== Event information card ===== -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:cardBackgroundColor="@color/card_background"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_medium">
+
+                <TextView
+                    android:id="@+id/tvDetailName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.Event.ItemTitle"
+                    tools:text="Android Development Workshop" />
+
+                <TextView
+                    android:id="@+id/tvDetailDateTime"
+                    style="@style/Widget.Event.DetailLine"
+                    app:drawableStartCompat="@drawable/ic_calendar"
+                    tools:text="Fri, 20 Nov 2026 · 09:30" />
+
+                <TextView
+                    android:id="@+id/tvDetailLocation"
+                    style="@style/Widget.Event.DetailLine"
+                    app:drawableStartCompat="@drawable/ic_location"
+                    tools:text="Greenwich Campus, Room 301" />
+
+                <TextView
+                    android:id="@+id/tvDetailOrganiser"
+                    style="@style/Widget.Event.DetailLine"
+                    app:drawableStartCompat="@drawable/ic_person"
+                    tools:text="Dr Tuan Nguyen" />
+
+                <!-- Hidden when the event has no email and no phone -->
+                <TextView
+                    android:id="@+id/tvDetailContact"
+                    style="@style/Widget.Event.DetailLine"
+                    android:visibility="gone"
+                    app:drawableStartCompat="@drawable/ic_email"
+                    tools:text="events@gre.ac.uk · 0912345678"
+                    tools:visibility="visible" />
+
+                <!-- Hidden when the event has no description -->
+                <TextView
+                    android:id="@+id/tvDetailDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:textAppearance="@style/TextAppearance.Event.ItemDetail"
+                    android:visibility="gone"
+                    tools:text="A hands-on workshop about building Android apps."
+                    tools:visibility="visible" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ===== "Sessions (N)" header - feature (c): total sessions of this event ===== -->
+        <TextView
+            android:id="@+id/tvSessionsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            tools:text="Sessions (3)" />
+
+        <!-- ===== Session list or empty message ===== -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerSessions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/list_bottom_padding"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_session" />
+
+            <LinearLayout
+                android:id="@+id/layoutSessionsEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/spacing_large"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tvSessionsEmptyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sessions_empty_title"
+                    android:textAppearance="@style/TextAppearance.Event.EmptyTitle" />
+
+                <TextView
+                    android:id="@+id/tvSessionsEmptyMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:gravity="center"
+                    android:text="@string/sessions_empty_message"
+                    android:textAppearance="@style/TextAppearance.Event.ItemDetail" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- ===== Floating "+" button: add a session to this event ===== -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddSession"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/spacing_medium"
+        android:contentDescription="@string/cd_add_session"
+        app:srcCompat="@drawable/ic_add" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

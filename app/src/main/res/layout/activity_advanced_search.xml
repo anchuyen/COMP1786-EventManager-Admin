@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Coursework feature (d): Advanced search.
+    Top: two criteria (date, organiser) with Clear / Search buttons.
+    Below: the matching events (same card as the main list). Tapping a result opens
+    its full details (EventDetailActivity).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AdvancedSearchActivity">
+
+    <!-- ===== Toolbar with back arrow ===== -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/screen_background">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationContentDescription="@string/cd_navigate_back"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:title="@string/title_advanced_search"
+            app:titleTextAppearance="@style/TextAppearance.Event.ToolbarTitle" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ===== Search criteria ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/spacing_medium">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/advanced_search_intro"
+            android:textAppearance="@style/TextAppearance.Event.ItemDetail" />
+
+        <!-- Date: type DD/MM/YYYY or tap the calendar button -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSearchDate"
+            style="@style/Widget.Event.TextInputLayout"
+            android:hint="@string/hint_search_date"
+            app:endIconContentDescription="@string/cd_pick_date"
+            app:endIconDrawable="@drawable/ic_date_range"
+            app:endIconMode="custom"
+            app:endIconTint="@color/brand_primary"
+            app:startIconDrawable="@drawable/ic_calendar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSearchDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789/"
+                android:imeOptions="actionNext"
+                android:inputType="date"
+                android:maxLength="10" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Organiser: part of the name is enough -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSearchOrganiser"
+            style="@style/Widget.Event.TextInputLayout"
+            android:hint="@string/hint_search_organiser"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_person">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSearchOrganiser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionSearch"
+                android:inputType="textPersonName|textCapWords"
+                android:maxLength="100" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Clear + Search buttons side by side -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnClearSearch"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:layout_weight="1"
+                android:text="@string/btn_clear" />
+
+            <Button
+                android:id="@+id/btnRunSearch"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_weight="1"
+                android:text="@string/btn_search"
+                app:icon="@drawable/ic_search"
+                app:iconTint="@color/brand_on_primary" />
+        </LinearLayout>
+
+        <!-- "3 events found" - hidden until the first search -->
+        <TextView
+            android:id="@+id/tvResultsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:text="3 events found"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+    <!-- ===== Results (or "no results" message) ===== -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerResults"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/spacing_large"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_event" />
+
+        <TextView
+            android:id="@+id/tvNoResults"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/spacing_large"
+            android:text="@string/advanced_no_results"
+            android:textAppearance="@style/TextAppearance.Event.ItemDetail"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </FrameLayout>
+</LinearLayout>

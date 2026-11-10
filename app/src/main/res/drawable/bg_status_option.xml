@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Background of each status radio button.
+    Selected: light blue with a blue border. Not selected: plain light card.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/field_corner_radius" />
+            <solid android:color="@color/brand_primary_container" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/brand_primary" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/field_corner_radius" />
+            <solid android:color="@color/card_background" />
+        </shape>
+    </item>
+</selector>

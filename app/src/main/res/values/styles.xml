@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Event name in the list -->
+    <style name="TextAppearance.Event.ItemTitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Details (date, location, organiser) in the list -->
+    <style name="TextAppearance.Event.ItemDetail" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <!-- Small "pill" label for the event type and status (colour is set in code) -->
+    <style name="TextAppearance.Event.Badge" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- White outlined text field with rounded corners and a start icon -->
+    <style name="Widget.Event.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/spacing_medium</item>
+        <item name="errorEnabled">true</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/brand_primary</item>
+        <item name="boxCornerRadiusTopStart">@dimen/field_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/field_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/field_corner_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/field_corner_radius</item>
+        <item name="startIconTint">@color/text_secondary</item>
+    </style>
+
+    <!-- Drop-down (exposed menu) field, same look as the text fields -->
+    <style name="Widget.Event.DropDown" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/spacing_medium</item>
+        <item name="errorEnabled">true</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/brand_primary</item>
+        <item name="boxCornerRadiusTopStart">@dimen/field_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/field_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/field_corner_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/field_corner_radius</item>
+        <item name="startIconTint">@color/outline</item>
+    </style>
+
+    <!-- One status option shown as a rounded "card" with a radio button -->
+    <style name="Widget.Event.StatusOption" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/spacing_small</item>
+        <item name="android:minHeight">@dimen/status_option_min_height</item>
+        <item name="android:background">@drawable/bg_status_option</item>
+        <item name="android:paddingStart">@dimen/spacing_small</item>
+        <item name="android:paddingEnd">@dimen/spacing_medium</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.BodyLarge</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Primary (filled) button -->
+    <style name="Widget.Event.Button" parent="Widget.Material3.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Destructive button: red text and icon on a light red background -->
+    <style name="Widget.Event.Button.Delete" parent="Widget.Material3.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:textSize">16sp</item>
+        <item name="backgroundTint">@color/status_cancelled_container</item>
+        <item name="android:textColor">@color/error</item>
+        <item name="icon">@drawable/ic_delete</item>
+        <item name="iconTint">@color/error</item>
+    </style>
+
+    <!-- Large bold title in the toolbar of the list screen -->
+    <style name="TextAppearance.Event.ToolbarTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Title of the empty state -->
+    <style name="TextAppearance.Event.EmptyTitle" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- One information line with an icon on the event details screen -->
+    <style name="Widget.Event.DetailLine" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/spacing_tiny</item>
+        <item name="android:drawablePadding">@dimen/spacing_small</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textAppearance">@style/TextAppearance.Event.ItemDetail</item>
+        <item name="drawableTint">@color/brand_primary</item>
+    </style>
+</resources>

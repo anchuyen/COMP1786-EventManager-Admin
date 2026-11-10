@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Coursework feature (a): body of the "Review your event" dialog.
+    Shows every value the user entered so they can check it before it is saved.
+    The rows are added in code (EventFormActivity#addConfirmRow) from item_confirm_row.xml.
+-->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/spacing_large"
+        android:paddingTop="@dimen/spacing_small">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_message"
+            android:textAppearance="@style/TextAppearance.Event.ItemDetail" />
+
+        <!-- Rounded box that holds the label/value rows -->
+        <LinearLayout
+            android:id="@+id/layoutConfirmRows"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:background="@drawable/bg_details_box"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/spacing_medium"
+            android:paddingVertical="@dimen/spacing_small" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

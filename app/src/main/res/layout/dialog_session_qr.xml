@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Coursework feature (f): check-in QR code of one session.
+    The QR image is generated in code (QrCodeHelper) every time the dialog opens,
+    so it always contains the latest session details.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/spacing_large"
+    android:paddingTop="@dimen/spacing_small">
+
+    <!-- White box so the code can be scanned even in dark surroundings -->
+    <ImageView
+        android:id="@+id/ivQrCode"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:background="@color/white"
+        android:contentDescription="@string/cd_session_qr"
+        android:padding="@dimen/spacing_small"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/tvQrSessionName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Event.ItemTitle"
+        tools:text="Opening Keynote" />
+
+    <TextView
+        android:id="@+id/tvQrDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Event.ItemDetail"
+        tools:text="Tech Summit · Fri, 25 Dec 2026 · 09:30 · Hall 1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:gravity="center"
+        android:text="@string/qr_hint"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:textColor="@color/outline" />
+</LinearLayout>

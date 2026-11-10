@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Coursework feature (b): body of the Add / Edit Session dialog.
+    Required: name, time, type. Optional: speaker, room, description.
+    The session ID is not shown: SQLite generates it automatically.
+-->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/spacing_large">
+
+        <!-- Session name (required) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSessionName"
+            style="@style/Widget.Event.TextInputLayout"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:hint="@string/hint_session_name"
+            app:counterEnabled="true"
+            app:counterMaxLength="100"
+            app:startIconDrawable="@drawable/ic_event_note">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSessionName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="textCapSentences"
+                android:maxLength="100" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Time (required): type HH:mm or tap the clock -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSessionTime"
+            style="@style/Widget.Event.TextInputLayout"
+            android:hint="@string/hint_session_time"
+            app:endIconContentDescription="@string/cd_pick_time"
+            app:endIconDrawable="@drawable/ic_schedule"
+            app:endIconMode="custom"
+            app:endIconTint="@color/brand_primary"
+            app:startIconDrawable="@drawable/ic_schedule">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSessionTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789:"
+                android:imeOptions="actionNext"
+                android:inputType="time"
+                android:maxLength="5" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Type (fixed list) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSessionType"
+            style="@style/Widget.Event.DropDown"
+            android:hint="@string/hint_session_type">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/actvSessionType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Speaker (optional) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSpeaker"
+            style="@style/Widget.Event.TextInputLayout"
+            android:hint="@string/hint_speaker"
+            app:startIconDrawable="@drawable/ic_person">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSpeaker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName|textCapWords"
+                android:maxLength="100" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Room (optional) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilRoom"
+            style="@style/Widget.Event.TextInputLayout"
+            android:hint="@string/hint_room"
+            app:startIconDrawable="@drawable/ic_location">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtRoom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                android:maxLength="50" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Description (optional) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSessionDescription"
+            style="@style/Widget.Event.TextInputLayout"
+            android:hint="@string/hint_session_description"
+            app:counterEnabled="true"
+            app:counterMaxLength="300"
+            app:startIconDrawable="@drawable/ic_notes">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSessionDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:inputType="textMultiLine|textCapSentences"
+                android:maxLength="300"
+                android:minLines="2" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

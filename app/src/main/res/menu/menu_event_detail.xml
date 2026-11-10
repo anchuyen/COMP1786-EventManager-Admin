@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Toolbar menu of the event details screen -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_search_sessions"
+        android:icon="@drawable/ic_search"
+        android:title="@string/action_search_sessions"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+    <item
+        android:id="@+id/action_edit_event"
+        android:icon="@drawable/ic_edit"
+        android:title="@string/action_edit_event"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_delete_event"
+        android:title="@string/action_delete_event"
+        app:showAsAction="never" />
+</menu>

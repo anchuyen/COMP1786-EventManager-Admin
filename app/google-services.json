@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "437966702362",
+    "project_id": "eventmanager-comp1786",
+    "storage_bucket": "eventmanager-comp1786.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437966702362:android:062dbe5234eff2648e8ea3",
+        "android_client_info": {
+          "package_name": "com.example.eventmanager.sqlite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU7yJwOrL5hxTPCHWwGP5ApDdn85nREVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

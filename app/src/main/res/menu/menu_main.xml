@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Toolbar menu of the event list: a search button that expands into a search box -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/action_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+    <item
+        android:id="@+id/action_sync"
+        android:icon="@drawable/ic_cloud_upload"
+        android:title="@string/action_sync"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_advanced_search"
+        android:icon="@drawable/ic_tune"
+        android:title="@string/action_advanced_search"
+        app:showAsAction="ifRoom" />
+</menu>

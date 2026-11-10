@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Event Manager Plus</string>
+
+    <!-- Screen titles -->
+    <string name="title_events">My Events</string>
+    <string name="title_add_event">Add Event</string>
+
+    <!-- Event list -->
+    <string name="empty_title">No events yet</string>
+    <string name="empty_message">Tap the + button to add your first event.</string>
+    <string name="cd_add_event">Add event</string>
+    <plurals name="event_count">
+        <item quantity="one">%d event</item>
+        <item quantity="other">%d events</item>
+    </plurals>
+
+    <!-- Event types -->
+    <string name="type_conference">Conference</string>
+    <string name="type_workshop">Workshop</string>
+    <string name="type_seminar">Seminar</string>
+    <string name="type_social">Social</string>
+    <string name="type_other">Other</string>
+
+    <!-- Add event form -->
+    <string name="hint_event_name">Event name</string>
+    <string name="hint_event_date">Event date</string>
+    <string name="helper_event_date">Format: dd/MM/yyyy – tap the calendar icon to pick a date</string>
+    <string name="hint_event_location">Location</string>
+    <string name="hint_event_organiser">Organiser</string>
+    <string name="hint_event_type">Event type</string>
+    <string name="btn_save_event">Save event</string>
+    <string name="date_picker_title">Select event date</string>
+
+    <!-- Content descriptions (accessibility) -->
+    <string name="cd_pick_date">Open calendar</string>
+    <string name="cd_date">Date</string>
+    <string name="cd_location">Location</string>
+    <string name="cd_organiser">Organiser</string>
+    <string name="cd_navigate_back">Go back</string>
+
+    <!-- Validation error messages -->
+    <string name="error_required">This field is required</string>
+    <string name="error_too_short">Please enter at least 2 characters</string>
+    <string name="error_too_long">Please enter no more than 100 characters</string>
+    <string name="error_date_format">Enter a real date in the format dd/MM/yyyy (e.g. 25/12/2026)</string>
+    <string name="error_date_range">Year must be between 2000 and 2100</string>
+    <string name="error_type_required">Please select an event type</string>
+    <string name="toast_fix_errors">Please fix the highlighted fields</string>
+
+    <!-- Feedback messages -->
+    <string name="toast_event_added">Event \"%1$s\" added</string>
+
+    <!-- Discard changes dialog -->
+    <string name="dialog_discard_title">Discard this event?</string>
+    <string name="dialog_discard_message">The information you entered will be lost.</string>
+    <string name="btn_discard">Discard</string>
+    <string name="btn_keep_editing">Keep editing</string>
+
+    <!-- ===== Exercise 3 additions ===== -->
+
+    <!-- Event status -->
+    <string name="label_event_status">Event status</string>
+    <string name="status_upcoming">Upcoming</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_cancelled">Cancelled</string>
+
+    <!-- Expected attendees (numeric field) -->
+    <string name="hint_attendees">Expected attendees</string>
+    <string name="helper_attendees">A whole number between 1 and 100,000</string>
+    <string name="cd_attendees">Expected attendees</string>
+    <plurals name="attendee_count">
+        <item quantity="one">%d attendee</item>
+        <item quantity="other">%d attendees</item>
+    </plurals>
+    <string name="error_attendees_not_number">Please enter a whole number (e.g. 50)</string>
+    <string name="error_attendees_range">Attendees must be between 1 and 100,000</string>
+
+    <!-- Edit and delete -->
+    <string name="title_edit_event">Edit Event</string>
+    <string name="btn_update_event">Update event</string>
+    <string name="btn_delete_event">Delete event</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_undo">Undo</string>
+    <string name="dialog_delete_title">Delete this event?</string>
+    <string name="dialog_delete_message">\"%1$s\" will be permanently deleted.</string>
+    <string name="toast_event_updated">Event \"%1$s\" updated</string>
+    <string name="snackbar_event_deleted">Event \"%1$s\" deleted</string>
+    <string name="error_event_not_found">This event no longer exists</string>
+    <string name="error_database">Something went wrong while saving. Please try again.</string>
+
+    <!-- ===== Form preview card ===== -->
+    <string name="preview_mode_new">New event</string>
+    <string name="preview_mode_edit">Editing event</string>
+    <string name="preview_untitled">Untitled event</string>
+    <string name="preview_no_date">Date not set</string>
+
+    <!-- Short descriptions shown in the event type drop-down -->
+    <string name="type_hint_conference">Keynotes &amp; panels</string>
+    <string name="type_hint_workshop">Hands-on session</string>
+    <string name="type_hint_seminar">Talk or guest lecture</string>
+    <string name="type_hint_social">Networking &amp; fun</string>
+    <string name="type_hint_other">Anything else</string>
+
+    <!-- ===== Search and filters ===== -->
+    <string name="action_search">Search</string>
+    <string name="search_hint">Search by event name or description</string>
+    <string name="filter_all">All</string>
+    <string name="filtered_count">%1$d of %2$d events</string>
+    <string name="no_results_title">No matching events</string>
+    <string name="no_results_message">Try a different search or filter.</string>
+    <string name="btn_create_event">Create event</string>
+
+    <!-- ===== Coursework (b): session types ===== -->
+    <string name="session_type_workshop">Workshop</string>
+    <string name="session_type_presentation">Presentation</string>
+    <string name="session_type_panel">Panel Discussion</string>
+    <string name="session_type_networking">Networking</string>
+    <string name="session_type_keynote">Keynote</string>
+    <string name="session_type_others">Others</string>
+
+    <!-- ===== Coursework (a): new fields, validation and confirmation ===== -->
+    <string name="hint_event_time">Start time</string>
+    <string name="helper_event_time">Format: HH:mm (24-hour) – tap the clock icon to pick a time</string>
+    <string name="cd_pick_time">Open clock</string>
+    <string name="time_picker_title">Select start time</string>
+    <string name="label_optional_details">Optional details</string>
+    <string name="hint_event_description">Description (optional)</string>
+    <string name="hint_contact_email">Contact email (optional)</string>
+    <string name="helper_contact_email">e.g. events@greenwich.ac.uk</string>
+    <string name="hint_contact_phone">Contact phone (optional)</string>
+    <string name="helper_contact_phone">Vietnamese mobile, e.g. 0912 345 678 or +84 912 345 678</string>
+
+    <string name="error_name_required">Please enter the event name</string>
+    <string name="error_date_required">Please enter the event date</string>
+    <string name="error_time_required">Please enter the start time</string>
+    <string name="error_location_required">Please enter the location</string>
+    <string name="error_organiser_required">Please enter the organiser</string>
+    <string name="error_attendees_required">Please enter the number of attendees</string>
+    <string name="error_time_format">Enter a valid time in the format HH:mm (e.g. 09:30)</string>
+    <string name="error_email_format">Please enter a valid email address</string>
+    <string name="error_phone_format">Enter a valid Vietnamese mobile number (e.g. 0912 345 678)</string>
+    <string name="error_duplicate_event">An event with this name already exists on this date</string>
+    <string name="toast_duplicate_event">\"%1$s\" already exists on %2$s</string>
+
+    <string name="confirm_title_add">Review your event</string>
+    <string name="confirm_title_edit">Review your changes</string>
+    <string name="confirm_message">Please check the details below. Tap Edit to change anything.</string>
+    <string name="btn_edit">Edit</string>
+    <string name="btn_confirm_save">Confirm &amp; save</string>
+    <string name="confirm_not_provided">Not provided</string>
+    <string name="label_type">Type</string>
+    <string name="label_status">Status</string>
+    <!-- ===== Coursework (b, c): event details and sessions ===== -->
+    <string name="title_event_details">Event details</string>
+    <string name="action_edit_event">Edit event</string>
+    <string name="action_delete_event">Delete event</string>
+    <plurals name="session_count">
+        <item quantity="one">%d session</item>
+        <item quantity="other">%d sessions</item>
+    </plurals>
+    <plurals name="dialog_delete_event_with_sessions">
+        <item quantity="one">\"%1$s\" and its %2$d session will be permanently deleted.</item>
+        <item quantity="other">\"%1$s\" and its %2$d sessions will be permanently deleted.</item>
+    </plurals>
+    <string name="label_sessions_count">Sessions (%1$d)</string>
+    <string name="sessions_empty_title">No sessions yet</string>
+    <string name="sessions_empty_message">Tap + to add the first session of this event.</string>
+    <string name="cd_add_session">Add session</string>
+    <string name="cd_delete_session">Delete session</string>
+    <string name="title_add_session">Add session</string>
+    <string name="title_edit_session">Edit session</string>
+    <string name="hint_session_name">Session name</string>
+    <string name="hint_session_time">Time (HH:mm)</string>
+    <string name="hint_session_type">Session type</string>
+    <string name="hint_speaker">Speaker (optional)</string>
+    <string name="hint_room">Room (optional)</string>
+    <string name="hint_session_description">Description (optional)</string>
+    <string name="error_session_name_required">Please enter the session name</string>
+    <string name="error_session_time_required">Please enter the session time</string>
+    <string name="btn_save">Save</string>
+    <string name="toast_session_added">Session \"%1$s\" added</string>
+    <string name="toast_session_updated">Session \"%1$s\" updated</string>
+    <string name="snackbar_session_deleted">Session \"%1$s\" deleted</string>
+    <string name="dialog_delete_session_title">Delete this session?</string>
+
+    <!-- ===== Coursework (d): search ===== -->
+    <string name="action_search_sessions">Search sessions</string>
+    <string name="search_sessions_hint">Session name or description</string>
+    <string name="label_sessions_filtered">Sessions (%1$d of %2$d)</string>
+    <string name="sessions_no_match_title">No matching sessions</string>
+    <string name="sessions_no_match_message">Try a different name or keyword.</string>
+
+    <string name="action_advanced_search">Advanced search</string>
+    <string name="title_advanced_search">Advanced search</string>
+    <string name="advanced_search_intro">Find events by date, organiser, or both.</string>
+    <string name="hint_search_date">Date (DD/MM/YYYY)</string>
+    <string name="hint_search_organiser">Organiser</string>
+    <string name="btn_search">Search</string>
+    <string name="btn_clear">Clear</string>
+    <string name="error_search_criteria_required">Enter a date or an organiser to search</string>
+    <string name="advanced_no_results">No events match these criteria.</string>
+    <plurals name="search_result_count">
+        <item quantity="one">%d event found</item>
+        <item quantity="other">%d events found</item>
+    </plurals>
+
+    <!-- ===== Coursework (e): cloud sync ===== -->
+    <string name="action_sync">Sync to cloud</string>
+    <string name="sync_dialog_title">Sync with cloud</string>
+    <string name="sync_dialog_nothing_pending">All events are already up to date in the cloud. You can still upload everything again.</string>
+    <plurals name="sync_dialog_pending">
+        <item quantity="one">%d event has changes that are not in the cloud yet.</item>
+        <item quantity="other">%d events have changes that are not in the cloud yet.</item>
+    </plurals>
+    <string name="btn_sync_changes">Sync changes</string>
+    <string name="btn_upload_all">Upload all</string>
+    <string name="btn_retry">Retry</string>
+    <string name="sync_progress_title">Syncing with the cloud</string>
+    <string name="sync_connecting">Connecting…</string>
+    <string name="sync_checking_cloud">Checking the cloud for deleted events…</string>
+    <string name="sync_uploading">Uploading %1$d of %2$d events…</string>
+    <string name="sync_success">Sync complete: %1$d uploaded, %2$d removed from the cloud</string>
+    <string name="sync_already_running">A sync is already running</string>
+    <string name="sync_no_internet">No internet connection. Connect to Wi-Fi or mobile data and try again.</string>
+    <string name="sync_error_title">Sync failed</string>
+    <string name="sync_error_timeout">The server did not respond. Check your internet connection and try again.</string>
+    <string name="sync_error_permission">The cloud refused the upload. Check the Firestore security rules.</string>
+    <string name="sync_error_generic">Something went wrong: %1$s</string>
+
+    <!-- ===== Coursework (f): session QR code ===== -->
+    <string name="cd_session_qr">Show check-in QR code</string>
+    <string name="qr_dialog_title">Session check-in QR</string>
+    <string name="qr_hint">Attendees scan this code at the room entrance to check in.</string>
+    <string name="qr_error">Could not create the QR code. Please try again.</string>
+    <string name="btn_close">Close</string>
+
+    <!-- ===== Coursework (f): location from GPS ===== -->
+    <string name="cd_use_my_location">Use my current location</string>
+    <string name="helper_location">Tap the target icon to fill in your current location</string>
+    <string name="location_finding">Finding your current location…</string>
+    <string name="location_filled">Location filled in from your current position</string>
+    <string name="location_error_unavailable">Couldn\'t get your location. Make sure Location is turned on and try again.</string>
+    <string name="location_permission_title">Allow location access?</string>
+    <string name="location_permission_message">The app uses your location only once, to fill in the event location for you. It is not stored or shared.</string>
+    <string name="location_permission_denied">Location permission denied – you can still type the location.</string>
+    <string name="btn_continue">Continue</string>
+</resources>

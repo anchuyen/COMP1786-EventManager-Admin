@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme (Material Design 3, light mode, Stitch palette) -->
+    <style name="Base.Theme.EventManager" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Brand colours -->
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorOnPrimary">@color/brand_on_primary</item>
+        <item name="colorPrimaryContainer">@color/brand_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/brand_on_primary_container</item>
+        <item name="colorSecondary">@color/brand_secondary</item>
+        <item name="colorSecondaryContainer">@color/brand_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/brand_on_secondary_container</item>
+
+        <!-- Surfaces, outlines and errors -->
+        <item name="colorSurface">@color/screen_background</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+        <item name="colorOutline">@color/outline</item>
+        <item name="colorError">@color/error</item>
+
+        <!-- Screen background and default text colours -->
+        <item name="android:colorBackground">@color/screen_background</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+
+    <!-- Theme applied to the app in AndroidManifest.xml -->
+    <style name="Theme.EventManager" parent="Base.Theme.EventManager" />
+</resources>

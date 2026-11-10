@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout of ONE session card (used by SessionAdapter):
+    time badge on the left, name / type / speaker + room / description in the middle,
+    delete button on the right. Tapping the card opens the Edit Session dialog.
+-->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/spacing_medium"
+    android:layout_marginTop="@dimen/spacing_small"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="@color/card_background"
+    app:cardCornerRadius="@dimen/details_corner_radius"
+    app:cardElevation="@dimen/card_elevation"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/spacing_small"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_tiny">
+
+        <!-- Start time, e.g. 09:30 -->
+        <TextView
+            android:id="@+id/tvSessionTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_type_badge"
+            android:backgroundTint="@color/brand_primary_container"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:textAppearance="@style/TextAppearance.Event.Badge"
+            android:textColor="@color/brand_primary"
+            tools:text="09:30" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSessionName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textAppearance="@style/TextAppearance.Event.ItemTitle"
+                tools:text="Opening Keynote" />
+
+            <TextView
+                android:id="@+id/tvSessionType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textAppearance="@style/TextAppearance.Event.Badge"
+                android:textColor="@color/brand_secondary"
+                tools:text="Keynote" />
+
+            <!-- "Speaker · Room" - hidden when both are empty -->
+            <TextView
+                android:id="@+id/tvSessionMeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.Event.ItemDetail"
+                tools:text="Dr A · Hall 1" />
+
+            <!-- Description - hidden when empty -->
+            <TextView
+                android:id="@+id/tvSessionDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textAppearance="@style/TextAppearance.Event.ItemDetail"
+                tools:text="Welcome talk and agenda." />
+        </LinearLayout>
+
+        <!-- Feature (f): show the check-in QR code of this session -->
+        <ImageButton
+            android:id="@+id/btnSessionQr"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_session_qr"
+            app:srcCompat="@drawable/ic_qr_code" />
+
+        <ImageButton
+            android:id="@+id/btnDeleteSession"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_delete_session"
+            app:srcCompat="@drawable/ic_delete" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

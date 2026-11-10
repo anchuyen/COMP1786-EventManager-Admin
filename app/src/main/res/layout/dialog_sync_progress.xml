@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Coursework feature (e): body of the "Syncing with the cloud" dialog -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/spacing_large"
+    android:paddingTop="@dimen/spacing_small"
+    android:paddingBottom="@dimen/spacing_medium">
+
+    <TextView
+        android:id="@+id/tvSyncStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sync_connecting"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textColor="@color/text_primary"
+        tools:text="Uploading 2 of 5 events…" />
+
+    <!-- Starts as an endless bar; becomes "2 of 5" once the number of events is known -->
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressSync"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:indeterminate="true" />
+</LinearLayout>

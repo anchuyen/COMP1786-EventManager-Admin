@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One row of the event type drop-down: coloured dot, type name and a short description -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="48dp"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/spacing_medium"
+    android:paddingVertical="12dp">
+
+    <View
+        android:id="@+id/viewTypeDot"
+        android:layout_width="@dimen/type_dot_size"
+        android:layout_height="@dimen/type_dot_size"
+        android:background="@drawable/bg_avatar"
+        tools:backgroundTint="@color/type_workshop" />
+
+    <TextView
+        android:id="@+id/tvTypeName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textColor="@color/text_primary"
+        tools:text="@string/type_workshop" />
+
+    <TextView
+        android:id="@+id/tvTypeHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+        android:textColor="@color/text_secondary"
+        tools:text="@string/type_hint_workshop" />
+</LinearLayout>

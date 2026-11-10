@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Event form, used both to ADD a new event and to EDIT an existing one.
+    Layout based on the Stitch design: live preview card, white rounded fields with icons,
+    a drop-down with coloured dots, status options shown as cards, and icon buttons.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EventFormActivity">
+
+    <!-- ===== Toolbar with back arrow (title changes in Edit mode) ===== -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationContentDescription="@string/cd_navigate_back"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:title="@string/title_add_event" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ===== Scrollable form ===== -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large">
+
+            <!-- ===== Live preview card ===== -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_medium">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvPreviewMode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_type_badge"
+                            android:backgroundTint="@color/brand_secondary_container"
+                            android:paddingHorizontal="@dimen/spacing_small"
+                            android:paddingVertical="2dp"
+                            android:text="@string/preview_mode_new"
+                            android:textAppearance="@style/TextAppearance.Event.Badge"
+                            android:textColor="@color/brand_on_secondary_container" />
+
+                        <TextView
+                            android:id="@+id/tvPreviewName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_tiny"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/preview_untitled"
+                            android:textAppearance="@style/TextAppearance.Event.ItemTitle" />
+
+                        <TextView
+                            android:id="@+id/tvPreviewDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:drawablePadding="@dimen/spacing_tiny"
+                            android:gravity="center_vertical"
+                            android:text="@string/preview_no_date"
+                            android:textAppearance="@style/TextAppearance.Event.ItemDetail"
+                            app:drawableStartCompat="@drawable/ic_calendar" />
+                    </LinearLayout>
+
+                    <!-- Icon box tinted with the type colour + status dot in the corner -->
+                    <FrameLayout
+                        android:layout_width="@dimen/preview_icon_box"
+                        android:layout_height="@dimen/preview_icon_box">
+
+                        <ImageView
+                            android:id="@+id/ivPreviewIcon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_preview_icon"
+                            android:importantForAccessibility="no"
+                            android:scaleType="center"
+                            app:srcCompat="@drawable/ic_event_note" />
+
+                        <View
+                            android:id="@+id/viewPreviewStatusDot"
+                            android:layout_width="@dimen/preview_status_dot"
+                            android:layout_height="@dimen/preview_status_dot"
+                            android:layout_gravity="top|end"
+                            android:background="@drawable/bg_avatar" />
+                    </FrameLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ===== Event name ===== -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilName"
+                style="@style/Widget.Event.TextInputLayout"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:hint="@string/hint_event_name"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_event_note">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapSentences"
+                    android:maxLength="100" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ===== Event date: type it, or tap the calendar button ===== -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDate"
+                style="@style/Widget.Event.TextInputLayout"
+                android:hint="@string/hint_event_date"
+                app:endIconContentDescription="@string/cd_pick_date"
+                app:endIconDrawable="@drawable/ic_date_range"
+                app:endIconMode="custom"
+                app:endIconTint="@color/brand_primary"
+                app:helperText="@string/helper_event_date"
+                app:startIconDrawable="@drawable/ic_calendar">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789/"
+                    android:imeOptions="actionNext"
+                    android:inputType="date"
+                    android:maxLength="10" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ===== Coursework (a): start time - type HH:mm or tap the clock button ===== -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTime"
+                style="@style/Widget.Event.TextInputLayout"
+                android:hint="@string/hint_event_time"
+                app:endIconContentDescription="@string/cd_pick_time"
+                app:endIconDrawable="@drawable/ic_schedule"
+                app:endIconMode="custom"
+                app:endIconTint="@color/brand_primary"
+                app:helperText="@string/helper_event_time"
+                app:startIconDrawable="@drawable/ic_schedule">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789:"
+                    android:imeOptions="actionNext"
+                    android:inputType="time"
+                    android:maxLength="5" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ===== Location ===== -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLocation"
+                style="@style/Widget.Event.TextInputLayout"
+                android:hint="@string/hint_event_location"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:endIconContentDescription="@string/cd_use_my_location"
+                app:endIconDrawable="@drawable/ic_my_location"
+                app:endIconMode="custom"
+                app:endIconTint="@color/brand_primary"
+                app:helperText="@string/helper_location"
+                app:startIconDrawable="@drawable/ic_location">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPostalAddress|textCapWords"
+                    android:maxLength="100" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ===== Organiser ===== -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilOrganiser"
+                style="@style/Widget.Event.TextInputLayout"
+                android:hint="@string/hint_event_organiser"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:startIconDrawable="@drawable/ic_person">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtOrganiser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName|textCapWords"
+                    android:maxLength="100" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ===== Expected attendees (numeric field) ===== -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAttendees"
+                style="@style/Widget.Event.TextInputLayout"
+                android:hint="@string/hint_attendees"
+                app:helperText="@string/helper_attendees"
+                app:startIconDrawable="@drawable/ic_people">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtAttendees"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="6" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ===== Event type: drop-down with coloured dots ===== -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilType"
+                style="@style/Widget.Event.DropDown"
+                android:hint="@string/hint_event_type"
+                app:startIconDrawable="@drawable/ic_dot">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/actvType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:saveEnabled="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ===== Event status: radio buttons shown as cards ===== -->
+            <TextView
+                android:id="@+id/tvStatusLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/label_event_status"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textColor="@color/text_primary" />
+
+            <RadioGroup
+                android:id="@+id/rgStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@id/rbUpcoming"
+                android:orientation="vertical">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rbUpcoming"
+                    style="@style/Widget.Event.StatusOption"
+                    android:drawableEnd="@drawable/ic_dot"
+                    android:drawableTint="@color/status_upcoming"
+                    android:text="@string/status_upcoming" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rbCompleted"
+                    style="@style/Widget.Event.StatusOption"
+                    android:drawableEnd="@drawable/ic_dot"
+                    android:drawableTint="@color/outline"
+                    android:text="@string/status_completed" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rbCancelled"
+                    style="@style/Widget.Event.StatusOption"
+                    android:drawableEnd="@drawable/ic_dot"
+                    android:drawableTint="@color/error"
+                    android:text="@string/status_cancelled" />
+            </RadioGroup>
+
+            <!-- ===== Coursework (a): optional details (no error if left empty) ===== -->
+            <TextView
+                android:id="@+id/tvOptionalLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:text="@string/label_optional_details"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textColor="@color/text_primary" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDescription"
+                style="@style/Widget.Event.TextInputLayout"
+                android:hint="@string/hint_event_description"
+                app:counterEnabled="true"
+                app:counterMaxLength="500"
+                app:startIconDrawable="@drawable/ic_notes">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLength="500"
+                    android:minLines="3" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmail"
+                style="@style/Widget.Event.TextInputLayout"
+                android:hint="@string/hint_contact_email"
+                app:helperText="@string/helper_contact_email"
+                app:startIconDrawable="@drawable/ic_email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="100" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPhone"
+                style="@style/Widget.Event.TextInputLayout"
+                android:hint="@string/hint_contact_phone"
+                app:helperText="@string/helper_contact_phone"
+                app:startIconDrawable="@drawable/ic_phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789+ .-"
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:maxLength="16" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ===== Buttons ===== -->
+            <Button
+                android:id="@+id/btnSave"
+                style="@style/Widget.Event.Button"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:text="@string/btn_save_event"
+                app:icon="@drawable/ic_check_circle" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                style="@style/Widget.Event.Button.Delete"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/btn_delete_event"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
