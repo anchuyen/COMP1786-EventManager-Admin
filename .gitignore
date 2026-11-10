@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Local backups made while editing (not part of the project)
+_backup*/
